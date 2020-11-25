@@ -1,0 +1,51 @@
+{%extends 'app\base.html'%}
+{%block title_block%}
+  Edutech
+{%endblock%}
+{%block content_block%}
+  {%if tag%}
+    <h4>Post tagged with '{{tag.name}}'</h4>
+  {%endif%}
+  {%for post in post_list%}
+    <a href="{{post.get_absolute_url}}"><h4>{{post.title}}</h4></a>
+    {{post.body|truncatewords:45|linebreaks}}
+    <p id='date'>Created on {{post.publish}} by  {{post.author}}</p>
+    <p>Tags:
+      {%for tag in post.tags.all%}
+        <a id ='a' href="{%url 'post_list_tag_by_name' tag.slug%}">{{tag.name}}</a>
+        {%if not forloop.last%},{%endif%}
+      {%endfor%}
+    </p>
+  {%endfor%}
+  {%include 'app\pagination.html' with page=post_list%}
+  <br>
+
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="https://miro.medium.com/max/2570/1*mq73ckSs-ve-8zxfHLcseA.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Life is all about Learning </h5>
+      <p class="card-text">The beautiful thing about life is, that we will never reach an age where there is nothing left to learn, see or be; it's magical really</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpRtLK7l-5YkcPWtX-6M6aanX-emCtNwKzAg&usqp=CAU">
+      <h5 class="card-title">Be kind.</h5>
+      <p class="card-text">It would be very sensible if you dont write abusive content in the comment section Strict action against thoses students would be taken in a case.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+</div>
+
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+{%endblock%}
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>

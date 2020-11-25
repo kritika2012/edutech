@@ -1,0 +1,20 @@
+{%extends 'app\base.html'%}
+{%load bootstrap4%}
+{%block content_block%}
+
+  <h1>Login</h1>
+  <form  class="form-group" method="post" >
+    {%csrf_token%}
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="Enter Username" id="exampleInputEmail1" class="form-control" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Enter password" id="exampleInputPassword1" class="form-control" required>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Login">
+    <br>
+    <br>
+    <a href="/register">New Here? Signup.</a>
+  </form>
+
+{%endblock%}

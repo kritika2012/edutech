@@ -1,0 +1,22 @@
+{% extends 'app\base.html'%}
+{%block content_block%}
+<body id='a'>
+  <table class="table table-hover table-light container" >
+    <thead>
+      <th>TITLE</th>
+      <th>EDUCATOR'S NAME</th>
+      <th>DATE PUBLISHED</th>
+    </thead>
+    <tbody>
+      {%for post in post_list%}
+      <tr>
+        <td><a href="{{post.get_absolute_url}}">{{post.title}}</a></td>
+        <td>{{post.author}}</td>
+        <td>{{post.publish}}</td>
+        {%endfor%}
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+{%endblock%}

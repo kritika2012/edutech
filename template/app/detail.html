@@ -1,0 +1,65 @@
+{%extends 'app\base.html'%}
+{% load bootstrap4%}
+{%block title_block%}
+  Edutech
+{%endblock%}
+{%block head_block%}
+<div class="container">
+    <h4>{{list.title}}</h4>
+    <p>EDUCATOR-{{list.author|title}}</p>
+    <p>{{list.body|linebreaks}}</p>
+    <a class="btn btn-dark" href="/share/{{list.id}}">Share By Mail</a>
+    <br>
+  {%with comments.count as count%}
+  <h2>{{count}} Query{{count|pluralize}}</h2>
+  {%endwith%}
+  {%if comments%}
+    {%for comm in comments%}
+      <p id='date'>Query {{forloop.counter}} by {{comm.name}} on {{comm.created}}</p>
+      <div class="cd">
+        {{comm.body|linebreaks}}
+      </div>
+      {%endfor%}
+      {%else%}
+      <p id='date'>There are no Queries!!!</p>
+  {%endif%}
+  {%if csubmit %}
+    <h2>Your Query Added Successfully.</h2>
+    {%else%}
+      <form class="form-group" method="POST">
+        <div class="form-group">
+      <label for="exampleFormControlTextarea1">Post your Query</label>
+      <textarea class="form-control " name="comment" id="exampleFormControlTextarea1"></textarea>
+        </div>
+        {%csrf_token%}
+        <input class="btn btn-dark" type="submit" name="" value="Submit">
+      </form>
+  {%endif%}
+  </div>
+
+{%endblock%}
+{%block content_block%}
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="https://miro.medium.com/max/2570/1*mq73ckSs-ve-8zxfHLcseA.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Life is all about Learning </h5>
+      <p class="card-text">The beautiful thing about life is, that we will never reach an age where there is nothing left to learn, see or be; it's magical really</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpRtLK7l-5YkcPWtX-6M6aanX-emCtNwKzAg&usqp=CAU">
+      <h5 class="card-title">Be kind.</h5>
+      <p class="card-text">It would be very sensible if you dont write abusive content in the comment section Strict action against thoses students would be taken in a case.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+</div>
+{%endblock%}
+
+{%block sidebar_block%}
+  <p>Created on -{{list.created}}</p>
+  <p>Last updated on - {{list.updated}}</p>
+{%endblock%}

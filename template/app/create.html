@@ -1,0 +1,11 @@
+{%extends 'app\base.html'%}
+{%load bootstrap4%}
+{%block content_block%}
+
+  <form class="form-group" method="POST" onSubmit="if(!confirm('Are you sure to post? We always recommend to check content once.')){return false;}">
+    {%bootstrap_form form size="small" layout="inline"%}
+    {%csrf_token%}
+    <input type="submit" class="btn btn-dark" name="" value="Post">
+  </form>
+
+{%endblock%}

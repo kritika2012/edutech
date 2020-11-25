@@ -1,0 +1,17 @@
+{%extends 'app\base.html'%}
+{%load bootstrap4%}
+{%block title_block%}
+ Share  by mail
+{%endblock%}
+{%block content_block%}
+{%if sent%}
+  <h6>Email sent successfully .</h6>
+  <a class="btn btn-dark" href=" ">Home</a>
+  {%else%}
+    <form class="form-group" method="POST">
+      {%bootstrap_form form size="small"%}
+      {%csrf_token%}
+      <input type="submit" class="btn btn-primary btn-sm"  value="Send Mail">
+    </form>
+{%endif%}
+{%endblock%}
